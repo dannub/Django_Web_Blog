@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block Title %}
+    {{Judul}}
+{% endblock Title %}
+    
+{% block pageTitle %}
+{{Judul}}
+{% endblock pageTitle %}
+
+{% block contents %}
+
+<form method="POST">
+    {% csrf_token %}
+    
+    {% for form in post_form  %}
+        <div class="form-group">
+                {{form.label}}
+                {{form}}
+        </div>
+    {% endfor %}
+    <button type="Submit" class="btn btn-primary">Kirim</button>
+
+</form>
+    
+{% endblock contents %}
+    

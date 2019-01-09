@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            
+            {% block Title %}
+                
+            {% endblock Title %}
+                
+        </title>
+        
+        {% include "snippets/styles.html" %}
+
+    </head>
+    <body>
+        {% include "snippets/nav.html" %}
+        <div class="container" style="margin-top:100px">
+            <h1>
+            
+                {% block pageTitle %}
+                    
+                {% endblock pageTitle %}
+                    
+            </h1>    
+        </div>
+        
+        <div class="container bg-light shadow mt-5 ">
+            
+                {% block contents %}
+                    
+                {% endblock contents %}
+        </div>
+         
+
+        <!-- jQuery -->
+        {% include "snippets/scripts.html" %}
+    </body>
+</html>

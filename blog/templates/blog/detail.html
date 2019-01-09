@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% block Title %}
+    {{Judul}}
+{% endblock Title %}
+    
+
+{% block pageTitle %}
+{{Judul}}
+{% endblock pageTitle %}
+
+
+{% block contents %}
+    {{Content}}
+
+    
+    <ul class="nav">
+
+
+            <li class="nav-item">
+                    <a class="nav-link" href="{% url "blog:index" %}">
+                        Allpost
+                    </a>
+             </li>
+
+    {% for dataCategory in Categories  %}
+        
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "blog:category" categoryInput=dataCategory.category %}">
+                    {{dataCategory.category}}             
+                </a>
+            </li>
+    {% endfor %}
+    </ul>
+
+    
+        <h1>{{Posts.judul}}</h1>
+        <p>{{Posts.publish}}</p>
+        <p style="align:justify;">{{Posts.body}}</p>
+        <a class="btn btn-danger" href="{% url "blog:delete" Posts.id %}">Hapus</a>
+        <a class="btn btn-warning" href="{% url "blog:update" posts.id %}">Update</a>
+        
+{% endblock contents %}
+    

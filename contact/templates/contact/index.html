@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block Title %}
+    {{Judul}}
+{% endblock Title %}
+
+{% block pageTitle %}
+    {{Judul}}
+{% endblock pageTitle %}
+    
+
+{% block contents %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          {{data_form.nama_lengkap.label_tag}}  
+          {{data_form.nama_lengkap}}
+        </div>
+        <div class="form-group">
+            {{data_form.jenis_kelamin.label_tag}}  
+            {% for componet in data_form.jenis_kelamin %}
+                <div class="form-check">
+                    {{componet.tag}}
+                    <label for="{{componet.id_for_label}}" class="form-check-label" >
+                        {{componet.choice_label}}    
+                    </label>  
+                </div>
+                
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+                {{data_form.tanggal_lahir.label_tag}}  
+            <div class ="from-row">
+                {{data_form.tanggal_lahir}}      
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{data_form.email.label_tag}}  
+            {{data_form.email}}
+          </div> 
+          
+        <div class="form-group">
+            {{data_form.alamat.label_tag}}  
+            {{data_form.alamat}}
+          </div>      
+
+        <div class="form-group">
+            <div class="form-check">
+                {{data_form.agree}}
+                <label for="{{data_form.agree.id_for_label}}" class="form-check-label" >
+                    {{data_form.agree.label}}    
+                </label>  
+            </div>  
+        </div>
+          
+
+        <button type="submit">Kirim</button>
+    </form>
+    
+{% endblock contents %}
+    
